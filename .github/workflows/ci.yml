@@ -3,6 +3,8 @@ name: Build, Dockerize and Push
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'k8s/**'
 
 jobs:
   build-and-push:
@@ -38,4 +40,4 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         build-args: |
-          MONGODB_URI=${{ secrets.MONGODB_URI }}
+          MONGODB_URI=${{ secrets.MONGODB_URI }}s
