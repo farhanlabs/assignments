@@ -4,7 +4,7 @@ metadata:
   name: app-secret
   namespace: default
 stringData:
-  MONGODB_URI: "mongodb+srv://<username>:<password>@cluster.mongodb.net/1fi_assignment?retryWrites=true&w=majority"
+  MONGODB_URI: "mongodb+srv://farhan091:farhan091@cluster0.6zb2hoi.mongodb.net/emi-platform?retryWrites=true&w=majority&appName=Cluster0"
 ---
 apiVersion: apps/v1
 kind: Deployment
