@@ -5,8 +5,6 @@ metadata:
   namespace: argocd
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/service.serversscheme: "https"
-    traefik.ingress.kubernetes.io/service.passexthost: "true"
 spec:
   rules:
   - host: argocd-1fi.duckdns.org
