@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+  namespace: default
+stringData:
+  MONGODB_URI: "mongodb+srv://<username>:<password>@cluster.mongodb.net/1fi_assignment?retryWrites=true&w=majority"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emi-app-deployment
+  namespace: default
+  labels:
+    app: emi-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emi-app
+  template:
+    metadata:
+      labels:
+        app: emi-app
+    spec:
+      containers:
+      - name: emi-app
+        image: farhan091/1fi-assignment-app:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: MONGODB_URI
