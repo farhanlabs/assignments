@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: global-ingress-router
-  namespace: default
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 spec:
@@ -17,7 +16,6 @@ spec:
             name: emi-app-service
             port:
               number: 80
-
   - host: argocd-1fi.duckdns.org
     http:
       paths:
@@ -27,8 +25,7 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 80
-
+              number: 443
   - host: grafana-1fi.duckdns.org
     http:
       paths:
@@ -36,6 +33,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: grafana-service
+            name: monitoring-grafana
             port:
               number: 80
