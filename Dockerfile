@@ -1,5 +1,5 @@
 # 1. Base image
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 # 2. Install dependencies
@@ -11,7 +11,7 @@ COPY . .
 RUN npm run build
 
 # 4. Production run image
-FROM node:18-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
