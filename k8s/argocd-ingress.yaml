@@ -4,7 +4,8 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
 spec:
   rules:
   - host: argocd-1fi.duckdns.org
@@ -16,4 +17,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 80
+              number: 443
