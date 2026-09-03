@@ -10,6 +10,10 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
+# 3. MongoDB URI for build
+ARG MONGODB_URI
+ENV MONGODB_URI=$MONGODB_URI
+
 # 4. Production run image
 FROM node:22-alpine AS runner
 WORKDIR /app
