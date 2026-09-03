@@ -4,7 +4,12 @@ metadata:
   name: global-ingress-router
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - 1fi.duckdns.org
+    secretName: emi-app-tls
   rules:
   - host: 1fi.duckdns.org
     http:

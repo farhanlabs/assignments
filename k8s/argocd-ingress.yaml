@@ -5,7 +5,12 @@ metadata:
   namespace: argocd
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - argocd-1fi.duckdns.org
+    secretName: argocd-tls
   rules:
   - host: argocd-1fi.duckdns.org
     http:
@@ -16,4 +21,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 80
+              number: 443
