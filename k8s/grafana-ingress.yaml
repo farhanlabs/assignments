@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: global-ingress-router
+  name: grafana-ingress
+  namespace: monitoring
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 spec:
   rules:
-  - host: 1fi.duckdns.org
+  - host: grafana-1fi.duckdns.org
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: emi-app-service
+            name: monitoring-grafana
             port:
               number: 80
