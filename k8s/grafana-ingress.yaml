@@ -4,7 +4,7 @@ metadata:
   name: grafana-ingress
   namespace: monitoring
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
@@ -19,6 +19,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: grafana-service
+            name: monitoring-grafana
             port:
-              number: 3000
+              number: 80
