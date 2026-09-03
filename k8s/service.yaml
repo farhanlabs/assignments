@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: emi-app-service
+  namespace: default
+spec:
+  selector:
+    app: emi-app
+  ports:
+    - protocol: TCP
+      port: 80          # Ingress is port par bhejega
+      targetPort: 3000  # Next.js app 3000 par chal rahi hai
+  type: ClusterIP
