@@ -1,147 +1,126 @@
-# 🚀 1Fi E-Commerce EMI Suite
+# 1Fi SDE1 — E-Commerce EMI Platform
 
-A production-ready full-stack e-commerce application built as part of the **1Fi SDE1 Full Stack Developer Assignment**.
-
-The application allows users to explore premium smartphones, select different product configurations, and view EMI options backed by mutual funds. Along with implementing the required full-stack functionality, the project has been extended with a **production-grade DevOps infrastructure** featuring Kubernetes orchestration, GitOps-based deployment, monitoring, observability, and automated application delivery.
+> A full-stack smartphone e-commerce application built for the **1Fi SDE1 Full Stack Developer Assignment**, extended with a production-grade cloud and DevOps infrastructure using Kubernetes, GitOps, monitoring, and observability.
 
 ---
 
-## 🌐 Project Overview
+## 🚀 Overview
 
-The application demonstrates a complete full-stack workflow:
+This project implements a dynamic smartphone shopping experience where users can:
 
-**Frontend → Backend API → MongoDB → Kubernetes → GitOps → Monitoring & Observability**
+- Browse smartphone products
+- View detailed product information
+- Select color, RAM, and storage variants
+- View dynamic pricing and MRP
+- Explore multiple EMI plans
+- Select an EMI plan
+- Proceed through a Digital KYC application flow
 
-The project was initially built to satisfy the core SDE1 assignment requirements and was then extended into a production-oriented cloud and DevOps environment.
+The application retrieves product data from **MongoDB through REST APIs** rather than relying on hardcoded product data.
 
-### Core Application Capabilities
-
-- Dynamic product catalog
-- Dynamic product pages
-- Multiple product variants
-- Storage/RAM configurations
-- Product pricing and MRP
-- Dynamic EMI calculations
-- Product image galleries
-- Color/finish selection
-- Digital KYC application flow
-- RESTful APIs
-- MongoDB database integration
-- Responsive fintech-oriented UI
-
-### DevOps Capabilities
-
-- AWS EC2 infrastructure
-- K3s Kubernetes cluster
-- Docker containerization
-- ArgoCD GitOps
-- Continuous deployment
-- Prometheus monitoring
-- Alertmanager alerting
-- Grafana dashboards
-- Application and infrastructure observability
-- Production HTTPS endpoints
+Beyond the core assignment requirements, the application has been deployed with a complete **production-oriented DevOps architecture** using AWS EC2, K3s Kubernetes, ArgoCD GitOps, Prometheus, Alertmanager, and Grafana.
 
 ---
 
-# 🔗 Live Project Links
+## 🔗 Project Links
 
-### 🛍️ Live Production Application
-
-https://1fi.duckdns.org
-
-### 🔄 ArgoCD GitOps Dashboard
-
-https://argocd-1fi.duckdns.org
-
-### 📊 Grafana Monitoring
-
-https://grafana-1fi.duckdns.org/
-
-### 💻 GitHub Repository
-
-https://github.com/farhanlabs/assignments.git
-
-### 🎥 Project Demonstration Video
-
-https://youtu.be/rOIkaTlwpyo?si=JfIg6OrzHv3Q2Nzc
+| Resource | Link |
+|---|---|
+| **Live Production Application** | https://1fi.duckdns.org |
+| **ArgoCD Dashboard** | https://argocd-1fi.duckdns.org |
+| **Grafana Dashboard** | https://grafana-1fi.duckdns.org/ |
+| **GitHub Repository** | https://github.com/farhanlabs/assignments.git |
+| **Demo Video** | https://youtu.be/rOIkaTlwpyo?si=JfIg6OrzHv3Q2Nzc |
 
 ---
 
-# 🏗️ Architecture
+## 🎯 Assignment Requirements
+
+The original assignment required a dynamic full-stack application with:
+
+- Product details
+- Product variants
+- MRP and selling price
+- Multiple EMI plans
+- Monthly payment amount
+- EMI tenure
+- Interest rate
+- Cashback information
+- EMI plan selection
+- Backend APIs
+- Database integration
+- At least 3 products
+- Multiple variants per product
+- Unique product URLs
+- Responsive frontend
+- Database schema and seed data
+- Deployed application
+- Demonstration video
+
+All of these requirements have been implemented.
+
+The project was additionally extended with a production-grade DevOps environment.
+
+---
+
+# ✨ Application Features
+
+## Product Catalog
+
+The application provides a dynamic smartphone catalog backed by MongoDB.
+
+Product information includes:
+
+- Product name
+- Description
+- Product images
+- MRP
+- Selling price
+- Available colors
+- RAM configurations
+- Storage configurations
+- Variant-specific pricing
+
+---
+
+## Dynamic Product Pages
+
+Each product is accessible through a unique, SEO-friendly URL.
+
+Example:
 
 ```text
-                         ┌─────────────────────────┐
-                         │        GitHub           │
-                         │ Application Source Code │
-                         │  Kubernetes Manifests   │
-                         └────────────┬────────────┘
-                                      │
-                                      │ GitOps
-                                      ▼
-                         ┌─────────────────────────┐
-                         │        ArgoCD            │
-                         │ Continuous Deployment    │
-                         │ Git → Kubernetes         │
-                         └────────────┬────────────┘
-                                      │
-                                      ▼
-                  ┌─────────────────────────────────────┐
-                  │            AWS EC2 Instance          │
-                  │                                     │
-                  │              K3s Cluster             │
-                  │                                     │
-                  │   ┌─────────────────────────────┐   │
-                  │   │     1Fi Application         │   │
-                  │   │                             │   │
-                  │   │ Next.js + React + Tailwind   │   │
-                  │   │                             │   │
-                  │   │      REST API Routes        │   │
-                  │   └──────────────┬──────────────┘   │
-                  │                  │                  │
-                  │                  ▼                  │
-                  │        ┌──────────────────┐         │
-                  │        │     MongoDB       │         │
-                  │        │ Product Database  │         │
-                  │        └──────────────────┘         │
-                  │                                     │
-                  │   ┌─────────────────────────────┐   │
-                  │   │       Observability         │   │
-                  │   │                             │   │
-                  │   │ Prometheus → Metrics        │   │
-                  │   │ Alertmanager → Alerts       │   │
-                  │   │ Grafana → Visualization     │   │
-                  │   └─────────────────────────────┘   │
-                  └─────────────────────────────────────┘
+/products/iphone-17-pro
+/products/samsung-s24-ultra
+/products/google-pixel-9-pro
+
+Product details are fetched dynamically using the product slug.
 
 
 ---
 
-✨ Assignment Requirements
+💰 Dynamic Pricing
 
-The implementation satisfies the core requirements specified in the 1Fi SDE1 assignment.
+The application dynamically updates pricing based on the selected product configuration.
 
-Product Experience
+Product
+   ├── Color
+   ├── RAM
+   ├── Storage
+   └── Variant Price
 
-Each product page provides:
+When the user changes the configuration, the active price is updated accordingly.
 
-Product name
 
-Product image
+---
 
-Variant information
+💳 EMI Plans
 
-Storage/RAM options
-
-MRP
-
-Selling price
-
-Multiple EMI plans
+The application provides multiple EMI plans with:
 
 Monthly payment amount
 
-EMI tenure
+Tenure
 
 Interest rate
 
@@ -149,87 +128,33 @@ Cashback information
 
 EMI plan selection
 
-Proceed/Application flow
 
+EMI calculations are performed dynamically using the selected variant price.
 
-The assignment requires at least 3 products with 2 or more variants for each product, which is supported by the implementation.
-
-
----
-
-🧩 Application Features
-
-Dynamic Product Routing
-
-Every product has a unique SEO-friendly URL.
-
-Example:
-
-/products/iphone-17-pro
-/products/samsung-s24-ultra
-/products/google-pixel-9-pro
-
-Product data is dynamically fetched based on the product slug.
+This avoids storing every possible EMI combination as static database records.
 
 
 ---
 
-💰 Dynamic Pricing Engine
+🖼️ User Experience
 
-Product pricing changes dynamically based on the selected configuration.
-
-Product
- ├── RAM
- ├── Storage
- ├── Color
- └── Variant Price
-
-The selected variant determines the active product price and corresponding EMI calculation.
-
-This avoids maintaining a large number of static EMI combinations in the database.
-
-
----
-
-💳 EMI Calculation
-
-EMI values are calculated dynamically using the active product variant price.
-
-The application supports different:
-
-Tenures
-
-Interest rates
-
-Monthly payment amounts
-
-Cashback information
-
-
-This provides a realistic EMI-selection experience similar to modern fintech/e-commerce platforms.
-
-
----
-
-🖼️ Interactive Product UI
-
-The application includes:
+The frontend includes:
 
 Responsive design
 
 Product image gallery
 
-Image thumbnails
+Thumbnail navigation
 
-Color/finish selectors
+Color/finish selection
 
-Variant selection
+RAM and storage selection
 
-Smooth navigation
+Dynamic pricing
 
 EMI selection cards
 
-Modal-based Digital KYC form
+Digital KYC modal
 
 Loading states
 
@@ -241,7 +166,7 @@ Mobile-friendly interface
 
 ---
 
-🛠️ Technology Stack
+🛠️ Tech Stack
 
 Frontend
 
@@ -251,14 +176,14 @@ React
 
 Tailwind CSS
 
-Next.js App Router
+App Router
 
 
 Backend
 
 Next.js Serverless API Routes
 
-RESTful APIs
+REST APIs
 
 
 Database
@@ -268,27 +193,17 @@ MongoDB
 Mongoose
 
 
-Containerization
-
-Docker
-
-
-Cloud Infrastructure
+DevOps & Cloud
 
 AWS EC2
 
+Docker
 
-Container Orchestration
+Kubernetes
 
-K3s Kubernetes
-
-
-GitOps / Continuous Deployment
+K3s
 
 ArgoCD
-
-
-Monitoring & Observability
 
 Prometheus
 
@@ -296,149 +211,192 @@ Alertmanager
 
 Grafana
 
-
-Source Control
-
 GitHub
 
+
+
+---
+
+🏗️ System Architecture
+
+┌──────────────────────┐
+                           │       GitHub         │
+                           │ Source Code +        │
+                           │ Kubernetes Manifests │
+                           └──────────┬───────────┘
+                                      │
+                                      │ GitOps
+                                      ▼
+                           ┌──────────────────────┐
+                           │       ArgoCD         │
+                           │ Continuous Delivery  │
+                           └──────────┬───────────┘
+                                      │
+                                      ▼
+                    ┌──────────────────────────────────┐
+                    │          AWS EC2 Instance        │
+                    │                                  │
+                    │           K3s Cluster            │
+                    │                                  │
+                    │  ┌────────────────────────────┐  │
+                    │  │     1Fi Application        │  │
+                    │  │                            │  │
+                    │  │ Next.js + React + Tailwind │  │
+                    │  │                            │  │
+                    │  │       REST APIs            │  │
+                    │  └─────────────┬──────────────┘  │
+                    │                │                 │
+                    │                ▼                 │
+                    │       ┌─────────────────┐        │
+                    │       │     MongoDB      │        │
+                    │       │ Product Database │        │
+                    │       └─────────────────┘        │
+                    │                                  │
+                    │  ┌────────────────────────────┐  │
+                    │  │      Observability         │  │
+                    │  │                            │  │
+                    │  │ Prometheus                │  │
+                    │  │ Alertmanager               │  │
+                    │  │ Grafana                    │  │
+                    │  └────────────────────────────┘  │
+                    └──────────────────────────────────┘
 
 
 ---
 
 ☁️ Production DevOps Infrastructure
 
-Instead of deploying the assignment as a basic application deployment, the project was extended into a production-oriented DevOps environment.
+Instead of limiting the assignment to a basic application deployment, the project was extended with a production-oriented cloud and DevOps setup.
 
-The complete infrastructure runs on an AWS EC2 instance using a lightweight K3s Kubernetes cluster.
+The production environment runs on an AWS EC2 instance with a lightweight K3s Kubernetes cluster.
 
-Infrastructure Flow
+Infrastructure Components
 
-Developer
+AWS EC2
    │
    ▼
-GitHub
+K3s Kubernetes
    │
-   ▼
-ArgoCD
+   ├── 1Fi Application
+   ├── Kubernetes Services
    │
-   ▼
-K3s Kubernetes Cluster
-   │
-   ├── Application
-   │
-   ├── Services
-   │
-   └── Monitoring Stack
-        │
-        ├── Prometheus
-        ├── Alertmanager
-        └── Grafana
+   └── Observability Stack
+         ├── Prometheus
+         ├── Alertmanager
+         └── Grafana
+
+
+---
+
+🐳 Docker Containerization
+
+The application is packaged as a Docker container and deployed to Kubernetes.
+
+Application Source
+       │
+       ▼
+Docker Image
+       │
+       ▼
+Kubernetes Deployment
+       │
+       ▼
+K3s Cluster
+       │
+       ▼
+Production Application
+
+Containerization provides a consistent application runtime between development and production.
+
+
+---
+
+☸️ Kubernetes — K3s
+
+The production application runs inside a K3s Kubernetes cluster hosted on AWS EC2.
+
+Kubernetes manages:
+
+Application workloads
+
+Pods
+
+Deployments
+
+Services
+
+Container lifecycle
+
+Workload recovery
+
+Service discovery
+
+Desired-state configuration
+
+
+K3s provides a lightweight Kubernetes distribution suitable for the project's cloud environment.
 
 
 ---
 
 🔄 GitOps with ArgoCD
 
-ArgoCD is used to implement a GitOps-based continuous deployment workflow.
+ArgoCD is used to manage Kubernetes deployments through GitOps.
 
-GitHub acts as the source of truth for the Kubernetes deployment configuration.
+The GitHub repository acts as the declarative source of truth for the Kubernetes configuration.
 
 Deployment Flow
 
-Code Change
+Developer
     │
     ▼
-GitHub Repository
+Git Commit
     │
     ▼
-ArgoCD Detects Changes
+GitHub
     │
     ▼
-Kubernetes Manifests Applied
+ArgoCD
     │
     ▼
-K3s Cluster Updated
+Kubernetes Manifests
     │
     ▼
-Application Deployment
+K3s Cluster
+    │
+    ▼
+Production Deployment
 
-This allows application deployments to be managed declaratively through Git.
+This provides a declarative and traceable deployment workflow.
 
-ArgoCD Dashboard
+ArgoCD
 
 https://argocd-1fi.duckdns.org
 
 
 ---
 
-☸️ Kubernetes with K3s
-
-The application is containerized and deployed on a lightweight K3s Kubernetes cluster running on AWS EC2.
-
-Kubernetes is responsible for:
-
-Application workload management
-
-Pod scheduling
-
-Service discovery
-
-Container lifecycle management
-
-Deployment management
-
-Restarting failed workloads
-
-Declarative infrastructure configuration
-
-
-K3s provides a lightweight Kubernetes distribution suitable for running the complete environment on a single cloud instance.
-
-
----
-
-🐳 Containerization
-
-The application is packaged as a Docker container to provide a consistent runtime environment across development and production.
-
-Source Code
-     │
-     ▼
-Docker Build
-     │
-     ▼
-Container Image
-     │
-     ▼
-Kubernetes Deployment
-     │
-     ▼
-Running Application
-
-
----
-
 📊 Monitoring & Observability
 
-A complete monitoring stack has been implemented to monitor both application and infrastructure health.
+A complete monitoring stack has been configured for infrastructure and application visibility.
 
 Prometheus
 
-Prometheus is used for collecting and storing metrics from the Kubernetes environment and application infrastructure.
+Prometheus is used for metrics collection and monitoring.
 
-Monitored areas include:
+The monitoring setup provides visibility into:
 
-Cluster health
+Node health
 
-Node metrics
+CPU utilization
 
-Resource utilization
+Memory utilization
 
-Application metrics
+Kubernetes resources
 
 Pod health
 
-Infrastructure performance
+Application/infrastructure metrics
 
 
 
@@ -446,33 +404,33 @@ Infrastructure performance
 
 🚨 Alertmanager
 
-Alertmanager is integrated with Prometheus to handle and route alerts generated from monitoring rules.
+Alertmanager handles alerts generated by Prometheus.
 
-It provides a mechanism for:
+It provides:
 
-Alert detection
-
-Alert routing
+Alert processing
 
 Alert grouping
+
+Alert routing
 
 Alert handling
 
 
-This helps identify abnormal system conditions and infrastructure issues.
+This allows abnormal system conditions to be surfaced and managed.
 
 
 ---
 
 📈 Grafana
 
-Grafana is used to visualize collected metrics through monitoring dashboards.
+Grafana provides dashboards for visualizing monitoring metrics.
 
 Dashboards provide visibility into:
 
-CPU utilization
+CPU usage
 
-Memory utilization
+Memory usage
 
 Node performance
 
@@ -480,10 +438,10 @@ Kubernetes health
 
 Pod/resource metrics
 
-Application telemetry
+Infrastructure telemetry
 
 
-Grafana Dashboard
+Grafana
 
 https://grafana-1fi.duckdns.org/
 
@@ -492,7 +450,7 @@ https://grafana-1fi.duckdns.org/
 
 🗄️ Database Schema
 
-The application uses MongoDB with Mongoose as the ODM.
+MongoDB is used as the application's database with Mongoose as the ODM.
 
 The product schema stores product information, pricing, images, colors, and storage configurations.
 
@@ -500,84 +458,84 @@ const ProductSchema = new Schema({
   slug: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
 
   name: {
     type: String,
-    required: true
+    required: true,
   },
 
   description: {
-    type: String
+    type: String,
   },
 
   tag: {
-    type: String
+    type: String,
   },
 
   mrp: {
     type: Number,
-    required: true
+    required: true,
   },
 
   price: {
     type: Number,
-    required: true
+    required: true,
   },
 
   images: [
     {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   ],
 
   colors: [
     {
       color: {
         type: String,
-        required: true
+        required: true,
       },
 
       image: {
         type: String,
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
 
   storageOptions: [
     {
       ram: {
         type: String,
-        required: true
+        required: true,
       },
 
       storage: {
         type: String,
-        required: true
+        required: true,
       },
 
       price: {
         type: Number,
-        required: true
+        required: true,
       },
 
       mrp: {
         type: Number,
-        required: true
-      }
-    }
-  ]
+        required: true,
+      },
+    },
+  ],
 });
 
 
 ---
 
-📡 REST API Endpoints
+📡 REST API
 
-The application exposes serverless REST APIs through Next.js.
+The application exposes RESTful APIs through Next.js serverless API routes.
 
 Method	Endpoint	Description
 
@@ -618,28 +576,64 @@ Response
 
 ---
 
-🔐 Environment Variables
+🌱 Database Seeding
 
-Create a .env.local file for local development.
+The project includes a seed API for initializing the database with sample product data.
 
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/1fi_assignment?retryWrites=true&w=majority
+GET /api/seed
 
-Production secrets are kept outside the source code and are provided to the application through environment configuration.
+For local development:
+
+http://localhost:3000/api/seed
 
 
 ---
 
-🚀 Local Development
+🔐 Environment Configuration
 
-1. Clone Repository
+Create a .env.local file:
+
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/1fi_assignment?retryWrites=true&w=majority
+
+> Never commit real database credentials or production secrets to the repository.
+
+
+
+
+---
+
+🚀 Local Setup
+
+Prerequisites
+
+Make sure the following are installed:
+
+Node.js
+
+npm
+
+Git
+
+MongoDB/MongoDB Atlas
+
+
+
+---
+
+1. Clone the Repository
 
 git clone https://github.com/farhanlabs/assignments.git
-
 cd assignments
+
+
+---
 
 2. Install Dependencies
 
 npm install
+
+
+---
 
 3. Configure Environment Variables
 
@@ -651,155 +645,174 @@ Add:
 
 MONGODB_URI=<your-mongodb-connection-string>
 
-4. Start Development Server
+
+---
+
+4. Start the Development Server
 
 npm run dev
 
-The application will be available at:
+Application:
 
 http://localhost:3000
 
 
 ---
 
-🌱 Database Seeding
-
-Before using the application locally, seed the database.
+5. Seed the Database
 
 Open:
 
 http://localhost:3000/api/seed
 
-The endpoint initializes the sample product data in MongoDB.
+After successful seeding, the initial product catalog will be available through the application.
 
 
 ---
 
-📦 Production Deployment
+🔁 Deployment Workflow
 
-The production environment uses:
+The production deployment follows a GitOps-oriented workflow:
 
-AWS EC2
-   │
-   ▼
-K3s Kubernetes
-   │
-   ├── Application Deployment
-   │
-   ├── Services
-   │
-   └── Monitoring Stack
+┌──────────────┐
+│   Developer  │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│    GitHub    │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│    ArgoCD    │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│     K3s      │
+│  Kubernetes  │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│  Production  │
+│ Application  │
+└──────────────┘
 
-Deployment configuration is managed declaratively through Git and synchronized to the Kubernetes cluster using ArgoCD.
+Monitoring runs alongside the production workload:
 
-
----
-
-🔁 CI/CD & GitOps Workflow
-
-Developer
-    │
-    ▼
-Git Commit
-    │
-    ▼
-GitHub
-    │
-    ▼
-Container Build
-    │
-    ▼
-Updated Deployment Configuration
-    │
-    ▼
-ArgoCD
-    │
-    ▼
-K3s Kubernetes
-    │
-    ▼
-Production Application
-
-GitOps provides a declarative and traceable deployment workflow where the repository represents the desired state of the Kubernetes environment.
-
-
----
-
-📊 Production Observability Flow
-
-Kubernetes / Application
-          │
-          ▼
-      Prometheus
-          │
-          ├──────────────► Alertmanager
-          │                     │
-          │                     ▼
-          │                Alert Handling
-          │
-          ▼
-       Grafana
-          │
-          ▼
-   Monitoring Dashboards
-
-This provides visibility into the health and performance of the production environment.
+Production Workloads
+        │
+        ▼
+   Prometheus
+        │
+        ├──────────────► Alertmanager
+        │
+        ▼
+     Grafana
+        │
+        ▼
+ Monitoring Dashboards
 
 
 ---
 
 🧠 Architectural Decisions
 
-Why Next.js?
+Next.js
 
-Next.js provides a unified frontend and backend environment, allowing the project to implement both the user interface and RESTful serverless APIs within a single application.
+Next.js provides a unified application framework for the frontend and backend API routes while supporting dynamic product routing through the App Router.
 
-Why MongoDB?
+MongoDB
 
-MongoDB provides a flexible NoSQL model suitable for product catalogs containing nested structures such as colors, storage options, and variants.
+MongoDB provides a flexible NoSQL data model suitable for product catalogs with nested color and storage configurations.
 
-Why Dynamic EMI Calculation?
+Mongoose
 
-EMI calculations are performed dynamically using the active product variant price rather than storing every possible EMI combination in the database.
+Mongoose provides schema definition, validation, and structured interaction with MongoDB.
 
-This keeps the data model simpler while allowing the UI to immediately reflect configuration changes.
+Dynamic EMI Calculation
 
-Why Kubernetes?
+EMI calculations are performed dynamically using the selected product variant's price, reducing the need to store every possible EMI combination.
 
-Kubernetes provides a production-oriented orchestration layer for managing application workloads, services, deployments, and container lifecycle.
+Docker
 
-Why K3s?
+Docker packages the application into a consistent and portable runtime environment.
 
-K3s provides a lightweight Kubernetes distribution that is well suited for running a complete Kubernetes environment on a cloud VM while maintaining standard Kubernetes concepts and workflows.
+Kubernetes
 
-Why ArgoCD?
+Kubernetes provides workload orchestration, service management, container lifecycle management, and desired-state configuration.
 
-ArgoCD introduces GitOps-based continuous delivery, making Git the declarative source of truth for Kubernetes deployments.
+K3s
 
-Why Prometheus + Grafana?
+K3s provides a lightweight Kubernetes distribution suitable for the project's AWS EC2 infrastructure.
 
-Prometheus provides metric collection and storage, while Grafana provides visualization and operational dashboards.
+ArgoCD
 
-Why Alertmanager?
+ArgoCD provides GitOps-based continuous deployment and keeps Kubernetes resources synchronized with the desired state defined in Git.
 
-Alertmanager provides centralized handling and routing of Prometheus alerts for abnormal system conditions.
+Prometheus
+
+Prometheus provides infrastructure and workload metrics collection.
+
+Alertmanager
+
+Alertmanager provides centralized alert handling and routing for Prometheus alerts.
+
+Grafana
+
+Grafana provides dashboards and visualization for monitoring Kubernetes and infrastructure metrics.
 
 
 ---
 
-🎯 Assignment Compliance
+🎥 Demo
+
+The project demonstration covers:
+
+Application UI
+
+Product and variant selection
+
+Dynamic pricing
+
+EMI functionality
+
+Backend APIs
+
+Database integration
+
+Production deployment
+
+Kubernetes environment
+
+ArgoCD GitOps
+
+Monitoring with Grafana
+
+
+Demo Video:
+
+https://youtu.be/rOIkaTlwpyo?si=JfIg6OrzHv3Q2Nzc
+
+
+---
+
+📋 Assignment Compliance
 
 Requirement	Implementation
 
 Full-stack web application	Next.js + React
 Dynamic product data	MongoDB + REST APIs
-Product details	Implemented
+Product information	Implemented
 Product variants	Implemented
+MRP and price	Implemented
 Multiple EMI plans	Implemented
 EMI selection	Implemented
 Unique product URLs	Dynamic slug-based routing
 Minimum 3 products	Implemented
-Multiple variants	Implemented
+Multiple variants per product	Implemented
 Backend APIs	Next.js API Routes
 Database	MongoDB
 Database schema	Mongoose
@@ -811,17 +824,15 @@ GitOps	ArgoCD
 Monitoring	Prometheus
 Alerting	Alertmanager
 Visualization	Grafana
-Demo video	YouTube
+Demonstration	YouTube
 
 
 
 ---
 
-🔍 Project Highlights
+🔍 Key Engineering Highlights
 
-This project goes beyond a basic assignment implementation by combining full-stack development with production-oriented DevOps practices.
-
-Full-Stack
+Full-Stack Development
 
 Next.js
 React
@@ -842,33 +853,36 @@ Alertmanager
 Grafana
 GitHub
 
-Production Workflow
+End-to-End Architecture
 
-Code
- ↓
+User
+ │
+ ▼
+Production Application
+ │
+ ▼
+Next.js
+ │
+ ▼
+REST APIs
+ │
+ ▼
+MongoDB
+
 GitHub
- ↓
-GitOps
- ↓
+ │
+ ▼
 ArgoCD
- ↓
+ │
+ ▼
 K3s
- ↓
+ │
+ ▼
 Production
- ↓
-Prometheus
- ↓
-Grafana
-
-
----
-
-🎥 Demonstration
-
-The demonstration video showcases the application along with the backend/API and production infrastructure.
-
-Video:
-https://youtu.be/rOIkaTlwpyo?si=JfIg6OrzHv3Q2Nzc
+ │
+ ├── Prometheus
+ ├── Alertmanager
+ └── Grafana
 
 
 ---
@@ -882,30 +896,37 @@ Full-Stack Developer | DevOps Engineer
 
 ---
 
-⭐ Final Note
+⭐ Project Summary
 
-This project was developed for the 1Fi SDE1 Full Stack Developer Assignment with a focus on building not only the requested full-stack functionality but also a reliable, observable, and production-oriented deployment environment.
+This project was developed for the 1Fi SDE1 Full Stack Developer Assignment and intentionally extended beyond the basic assignment scope.
 
-The implementation demonstrates practical experience across:
+The final implementation demonstrates practical experience across:
 
-Full-stack development
+Full-stack application development
 
-REST API design
+REST API development
 
-Database modeling
+Database design
 
-Containerization
+Dynamic routing
 
-Cloud infrastructure
+Dynamic pricing and EMI calculations
 
-Kubernetes
+Docker containerization
 
-GitOps
+AWS cloud infrastructure
 
-Continuous deployment
+Kubernetes orchestration
+
+GitOps-based deployment
+
+Continuous delivery
 
 Monitoring
 
 Observability
 
 Alerting
+
+
+Built with a focus on production readiness, reliability, automation, and maintainability.
